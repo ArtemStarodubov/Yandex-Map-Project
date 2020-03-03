@@ -4,12 +4,12 @@ import pygame
 import requests
 
 position = (133.795384, -25.694768)
-delta = (30, 30)
+delta = 30
 
 
 params = {
     'll': ",".join(map(str, position)),
-    'spn': ",".join(map(str, position)),
+    'spn': f'{delta},{delta}',
     'l': 'sat',
 }
 
