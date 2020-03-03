@@ -1,14 +1,23 @@
 import os
 import sys
-
 import pygame
 import requests
 
-response = None
-map_request = "http://static-maps.yandex.ru/1.x/?ll=133.795384,-25.694768&spn=30,30&l=sat"
-response = requests.get(map_request)
+position = (133.795384, -25.694768)
+delta = (30, 30)
 
-if not response:
+
+params = {
+    'll': ",".join(map(str, position)),
+    'spn': ",".join(map(str, position)),
+    'l': 'sat',
+}
+
+map_request = "http://static-maps.yandex.ru/1.x/?ll=&spn=30,30&l=sat"
+response = requests.get(map_request, params=params)
+
+
+if response.status_code != 200:
     print("Ошибка выполнения запроса:")
     print(map_request)
     print("Http статус:", response.status_code, "(", response.reason, ")")
