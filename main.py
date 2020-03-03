@@ -13,7 +13,7 @@ params = {
     'l': 'sat',
 }
 
-map_request = "http://static-maps.yandex.ru/1.x/?ll=&spn=30,30&l=sat"
+map_request = "http://static-maps.yandex.ru/1.x/"
 response = requests.get(map_request, params=params)
 
 
